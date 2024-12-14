@@ -1,0 +1,10 @@
+#!/bin/bash
+# removes all spaces from all files and directories in a directory
+
+for file in "$@" ; do
+    newname=$(echo "$file" | tr ' ' '_')
+    if [ "$file" != "$newname" ]; then
+        echo "Renaming " $file " as " $newname
+        mv "$file" "$newname"
+    fi
+done

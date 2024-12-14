@@ -1,0 +1,11 @@
+#!/bin/bash
+
+if [ $# -ne 1 ]; then
+    echo "Use: timedu <time>"
+    exit 1
+fi
+
+while [ 1 ]; do
+    du -sh
+    sleep $1
+done

@@ -1,0 +1,5 @@
+#!/bin/bash
+echo -n "Used RAM: "
+free -h | sed -n '2p' | awk '{print $3}'
+echo -n "Free RAM: "
+free -h | sed -n '2p' | awk '{print $NF}'

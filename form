@@ -1,0 +1,14 @@
+#!/bin/bash
+
+for FILE in "$@"
+do
+    astyle --style=kr --break-closing-brackets --add-braces $FILE 
+    sed -i 's/\([^\s]\)[[:space:]]\+(/&/g' $FILE
+    sed -i 's/\([^\s]\)[[:space:]]\+{/&/g' $FILE
+    sed -i 's/[[:space:]]\+{\s*/{/g' $FILE
+done
+
+rm *.orig
+
+
+

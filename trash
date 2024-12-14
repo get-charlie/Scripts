@@ -1,0 +1,9 @@
+#!/bin/bash
+
+TRASH="$HOME/Trash"
+
+for FILE in "$@"
+do
+    echo "Moving $FILE to $TRASH"
+    mv $FILE $TRASH
+done

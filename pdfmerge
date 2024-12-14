@@ -1,0 +1,39 @@
+#!/usr/bin/env python3
+
+import PyPDF2
+import sys
+import os
+import re
+
+def merge_pdf(outfile, infiles):
+    merger = PyPDF2.PdfMerger()
+    for path in infiles:
+        print("Appending " + path)
+        merger.append(path)
+    merger.write(outfile)
+    merger.close()
+
+pdfpatern = re.compile(r'.*\.pdf$')
+
+if __name__ == "__main__":
+
+    if len(sys.argv) < 3:
+        print("Use: pdfmerge output.pdf input1.pdf input2.pdf ...")
+        sys.exit(1)
+
+    for arg in sys.argv[1:]:
+        if not pdfpatern.match(arg):
+            print("Input must be .pdf files.")
+            sys.exit(1)
+
+    outfile = sys.argv[1]
+    infiles = sys.argv[2:]
+    merge_pdf(outfile, infiles)
+    print("Docs merged succesfully.")
+
+
+
+
+
+
+

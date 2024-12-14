@@ -1,0 +1,16 @@
+#!/bin/bash
+
+WERROR='Weather server unreachable.'
+
+hl_cal(){
+  cal_output=$(cal)
+  today=$(date +%_d)
+  cal_hl=$(echo "$cal_output" | sed "s/\b$today\b/$(tput smso)$today$(tput rmso)/")
+  echo "$cal_hl"
+}
+
+paste <(hl_cal) <(cal -3 | cut -c 45-70) \
+    <(timeout 2 curl -s wttr.in/madrid?0 || cowsay -d $WERROR)
+
+cat ~/.todo
+

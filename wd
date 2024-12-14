@@ -1,0 +1,11 @@
+#!/bin/bash
+
+wd(){
+    if [ "$#" -ne 1 ];
+    then 
+        echo "Use: wd <dir>"
+        return 1
+    fi
+    mkdir $1
+    cd $1
+}

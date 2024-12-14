@@ -1,0 +1,20 @@
+#!/bin/bash
+
+if [ "$#" -lt 1 ] || [ "$#" -gt 2 ]; then
+    echo "Usage: renum <new_name> [extension]"
+    exit 1
+fi
+
+name="$1"
+ext="${2:-}"
+
+i=1
+for file in *"$ext"; do
+    if [ -f "$file" ]; then
+        newfile="${name}${i}${ext}"
+        echo "renaming $file to $newfile"
+        mv "$file" "$newfile"
+        ((i++))
+    fi
+done
+

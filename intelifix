@@ -1,0 +1,2 @@
+#!/bin/bash
+rm $HOME/.var/app/com.jetbrains.IntelliJ-IDEA-Community/config/JetBrains/IdeaIC2024.3/.lock
