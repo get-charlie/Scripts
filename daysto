@@ -1,0 +1,15 @@
+#!/bin/bash
+
+if [ -z "$1" ]; then
+  echo "Usage: $0 DD-MM-YY"
+  exit 1
+fi
+
+TODAY=$(date +%s)
+
+FUTURE=$(date -d "$(echo $1 | awk -F'-' '{print "20"$3"-"$2"-"$1}')" +%s)
+
+DAYS_LEFT=$((( FUTURE - TODAY + 86399 ) / 86400 ))
+
+echo "$DAYS_LEFT"
+
